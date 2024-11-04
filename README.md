@@ -30,7 +30,8 @@ Ce script PHP a été créé pour aider les développeurs à travailler plus eff
 * **Téléchargement automatique** : Télécharge la version sélectionnée en un clic.
 * **Décompression automatique** : Décompresse l'archive téléchargée.
 * **Vérification PHP** : Vérifie la compatibilité de votre version PHP avec PrestaShop.
-* **Lancement de l'installation** : Redirige vers `index.php` pour initier l'installation.
+* **Suppression automatique du script** : Efface ce script par sécurité.
+* **Lancement de l'installation** : Redirige vers `index.php` de Prestashop pour initier l'installation.
 
 ### Étapes d'installation
 
@@ -38,6 +39,7 @@ Ce script PHP a été créé pour aider les développeurs à travailler plus eff
 2. Installez-le à la racine de votre dossier de domaine ou sous-domaine.
 3. Accédez à votre site via votre navigateur.
 4. Suivez les instructions pour configurer et installer PrestaShop.
+5. Le script sera automatiquement supprimé.
 
 ### 📦 &nbsp; Utilisé dans ce projet
 
