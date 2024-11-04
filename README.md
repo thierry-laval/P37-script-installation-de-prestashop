@@ -80,7 +80,7 @@ Si vous appréciez ce projet, vous pouvez me soutenir :
 
 ### &hearts;&nbsp;&nbsp;&nbsp;&nbsp;Love Markdown
 
-Donnez une ⭐️ &nbsp; si ce projet vous a plu !
+Donnez une ⭐️ &nbsp;si ce projet vous a plu !
 
 <span style="font-family:Papyrus; font-size:4em;">FAN DE GITHUB !</span>
 
