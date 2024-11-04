@@ -49,7 +49,7 @@ Ce script PHP a été créé pour aider les développeurs à travailler plus eff
 
 ***
 
-#### Les contributions sont les bienvenues !
+#### Les contributions sont les bienvenues
 
 Suivez les étapes suivantes :
 
@@ -67,10 +67,9 @@ Copyright © 2024 [Thierry Laval](https://thierrylaval.dev)
 
 #### €€€ Soutien
 
-Si vous appréciez ce projet, vous pouvez me soutenir : 
+Si vous appréciez ce projet, vous pouvez me soutenir :
 
 <a href="https://paypal.me/thierrylaval01?country.x=FR&locale.x=fr_FR" target="_blank"><img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="Soutiens-moi !" height="35" width="150"></a>
-
 
 [Voir mon travail](https://github.com/thierry-laval)
 
