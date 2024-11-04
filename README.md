@@ -10,7 +10,7 @@
 
 ***
 
-### 📎 Projet 36 - Création d'un installateur de version de Prestashop
+### 📎 Projet 37 - Création d'un installateur de version de Prestashop
 
 _`Début du projet le 27/11/2023`_
 
@@ -80,7 +80,7 @@ Si vous appréciez ce projet, vous pouvez me soutenir :
 
 ### &hearts;&nbsp;&nbsp;&nbsp;&nbsp;Love Markdown
 
-Donnez une ⭐️ &nbsp; si ce projet vous a plut !
+Donnez une ⭐️ &nbsp; si ce projet vous a plu !
 
 <span style="font-family:Papyrus; font-size:4em;">FAN DE GITHUB !</span>
 
