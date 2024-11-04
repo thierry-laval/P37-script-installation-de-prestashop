@@ -34,7 +34,7 @@ Ce script PHP a été créé pour aider les développeurs à travailler plus eff
 
 ### Étapes d'installation
 
-1. Téléchargez le script.
+1. Téléchargez le script 'index.php'.
 2. Installez-le à la racine de votre dossier de domaine ou sous-domaine.
 3. Accédez à votre site via votre navigateur.
 4. Suivez les instructions pour configurer et installer PrestaShop.
