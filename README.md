@@ -61,6 +61,10 @@ Suivez les étapes suivantes :
 * Push vers la branche (git push origin feature/ajout-fonctionnalite)
 * Ouvrez une Pull Request
 
+A faire :
+
+* Installation automatique d'une base de données
+
 #### 📝 &nbsp; License
 
 Ce projet est sous licence [MIT](LICENCE).
@@ -81,12 +85,12 @@ Si vous appréciez ce projet, vous pouvez me soutenir :
 
 ### &hearts;&nbsp;&nbsp;&nbsp;&nbsp;Love Markdown
 
-Donnez une ⭐️ &nbsp;si ce projet vous a plu !
+Donnez une ⭐️ &nbsp;si ce projet vous plaît !
 
 <span style="font-family:Papyrus; font-size:4em;">FAN DE GITHUB !</span>
 
 <!-- [This is an image](https://myoctocat.com/assets/images/base-octocat.svg) -->
 
-<a href="url"><img src="https://myoctocat.com/assets/images/base-octocat.svg" height="300"></a>
+<a href="url"><img src="https://github.com/thierry-laval/P00-mes-archives/blob/master/images/octocat-oley.png" height="300"></a>
 
 **[⬆ Retour en haut](#auteur)** <br>
