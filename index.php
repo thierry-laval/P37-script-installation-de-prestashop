@@ -1,341 +1,205 @@
-<?php
-// Fonction pour vérifier les extensions PHP
-function verifierExtension($extension) { // Vérifie si l'extension spécifiée est chargée
-    return extension_loaded($extension) 
-        // Si l'extension est chargée, retourne un élément de liste avec un message en vert
-        ? "<li style='color: green;'>$extension est activée.</li>"
-        // Si l'extension n'est pas chargée, retourne un élément de liste avec un message en rouge
-        : "<li style='color: red;'>$extension n'est pas activée.</li>";}
-?>
 <!DOCTYPE html>
 <html lang="fr">
-<link rel="icon"
-    href="https://raw.githubusercontent.com/thierry-laval/P00-mes-archives/master/images/favicon-thierrylaval.ico" />
-<!--https://github.com/thierry-laval-->
-<!--HEAD-->
 <head>
     <meta charset="UTF-8">
-    <title>Assistant de téléchargement PrestaShop</title>
+    <title>Installation de PrestaShop</title>
     <style>
-        /* Déclaration des variables CSS */
-        :root {
-            --background-color: #41A1E8;
-            /* Couleur de fond principale */
-            --container-background: white;
-            /* Couleur de fond du conteneur */
-            --button-background: #28a745;
-            /* Couleur de fond des boutons */
-            --button-hover: #218838;
-            /* Couleur de fond des boutons au survol */
-            --border-color: #ccc;
-            /* Couleur des bordures */
-            --alert-color: red;
-            /* Couleur des alertes */
-            --info-background: #f8f9fa;
-            /* Couleur de fond pour les informations */
-            --attention-background: #fff3cd;
-            /* Couleur de fond pour les messages d'attention */
-            --attention-border: #ffeeba;
-            /* Couleur de bordure pour les messages d'attention */
-            --font-size-base: 14px;
-            /* Taille de police de base */
-        }
-
-        /* Styles globaux */
         body {
-            background-color: var(--background-color);
-            /* Application de la couleur de fond définie */
-            padding: 30px;
-            /* Espacement intérieur autour du corps de la page */
-            font-size: var(--font-size-base);
-            /* Taille de police définie dans :root */
-            margin: 0;
-            /* Réinitialisation de la marge par défaut du body */
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
         }
-
         .container {
-            background: var(--container-background);
-            /* Couleur de fond du conteneur */
-            padding: 25px;
-            /* Espacement intérieur du conteneur */
-            border-radius: 12px;
-            /* Arrondissement des coins du conteneur */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            /* Ombre portée pour donner de la profondeur */
-            width: 90%;
-            /* Largeur responsive de 90% */
-            max-width: 500px;
-            /* Largeur maximum pour les écrans larges */
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 600px;
             margin: 0 auto;
-            /* Centrage du conteneur sur la page */
         }
-
-        select,
-        input[type="submit"],
-        button {
-            flex: 1;
-            /* Équilibrage de l'espace entre les éléments flexibles */
-            margin: 0 5px;
-            /* Espacement horizontal entre les éléments */
-            padding: 12px;
-            /* Espacement intérieur des éléments */
-            border-radius: 6px;
-            /* Arrondissement des coins des éléments */
-            border: 1px solid var(--border-color);
-            /* Bordure autour des éléments */
-            transition: background-color 0.3s;
-            /* Transition douce pour le changement de couleur de fond */
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
-
         input[type="submit"] {
-            background-color: var(--button-background);
-            /* Couleur de fond du bouton de soumission */
+            background-color: #007bff;
             color: white;
-            /* Couleur du texte du bouton */
             border: none;
-            /* Suppression de la bordure par défaut */
             cursor: pointer;
-            /* Changement du curseur au survol */
         }
-
         input[type="submit"]:hover {
-            background-color: var(--button-hover);
-            /* Changement de couleur de fond au survol */
+            background-color: #0056b3;
         }
-
-        .info-box {
-            background-color: var(--info-background);
-            /* Couleur de fond de la boîte d'informations */
-            border-radius: 12px;
-            /* Arrondissement des coins de la boîte d'informations */
-            padding: 10px 30px;
-            /* Espacement intérieur de la boîte */
-            margin-top: 15px;
-            /* Espacement supérieur de la boîte */
+		.info-box {
+            background-color: #f2f2f2; 
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
         }
-
-        .extensions {
-            text-align: left;
-            /* Alignement du texte à gauche */
-            font-size: 12px;
-            /* Taille de police pour la liste des extensions */
-        }
-
         .extensions ul {
             display: flex;
-            /* Affichage en flex pour la liste */
             flex-wrap: wrap;
-            /* Permet aux éléments de s'enrouler sur plusieurs lignes */
-            padding: 20;
-            /* Espacement autour de la liste */
-            margin: 0;
-            /* Suppression de la marge par défaut */
+            justify-content: center;
+            list-style: none;
+            padding: 0;
         }
-
         .extensions li {
-            flex-basis: 45%;
-            /* Largeur de base des éléments de liste à 45% */
-            padding: 3px;
-            /* Espacement intérieur des éléments de liste */
+            flex-basis: 50%;
         }
-
+        .icon-ok {
+            color: green;
+        }
+        .icon-not-ok {
+            color: red;
+        }
         .footer {
             text-align: center;
-            /* Alignement du texte au centre */
-            margin-top: 25px;
-            /* Espacement supérieur pour le footer */
-            font-size: 0.9em;
-            /* Taille de police légèrement plus petite pour le footer */
-        }
-
-        form {
-            display: flex;
-            /* Affichage en flex pour le formulaire */
-            justify-content: space-between;
-            /* Espacement entre les éléments du formulaire */
-            align-items: center;
-            /* Alignement vertical des éléments au centre */
-            margin-bottom: 15px;
-            /* Espacement inférieur du formulaire */
-        }
-
-        .alert {
-            color: var(--alert-color);
-            /* Couleur du texte d'alerte */
-            font-weight: bold;
-            /* Mise en gras du texte d'alerte */
-            margin-top: 10px;
-            /* Espacement supérieur pour le texte d'alerte */
-        }
-
-        .footer a {
-            color: white;
-            /* Couleur des liens dans le footer */
-            text-decoration: none;
-            /* Suppression du soulignement par défaut des liens */
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-            /* Soulignement au survol des liens */
-        }
-
-        h1 {
-            font-size: 20px;
-            /* Taille de police pour les titres de premier niveau */
-            margin: 10;
-            /* Espacement autour des titres de premier niveau */
-        }
-
-        h2 {
-            font-size: 15px;
-            /* Taille de police pour les titres de second niveau */
-            margin: 10;
-            /* Espacement autour des titres de second niveau */
-        }
-
-        .attention {
-            padding: 10px;
-            /* Espacement intérieur pour les messages d'attention */
-            background-color: var(--attention-background);
-            /* Couleur de fond pour les messages d'attention */
-            border: 1px solid var(--attention-border);
-            /* Bordure pour les messages d'attention */
-            border-radius: 5px;
-            /* Arrondissement des coins pour les messages d'attention */
-            margin: 15px 0;
-            /* Espacement vertical pour les messages d'attention */
+            margin-top: 20px;
+            font-size: 0.8em;
         }
     </style>
 </head>
-<!--MAIN-->
 <body>
     <div class="container">
-        <img src="https://thierrylaval.dev/wp-content/uploads/2022/04/Logo-Developpeur-web.png"
-            alt="Logo Développeur Web" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-        <h1>Assistant de téléchargement PrestaShop</h1>
-        <h2>Installer différentes versions de PrestaShop depuis GitHub.</h2>
+        <h2>Télécharge | Dézippe | Installe</h2>
+		<p>Ce script a été créé pour faciliter le téléchargement et l'installation des différentes versions de PrestaShop directement depuis le dépôt GitHub.</p>
         <?php
-        // Obtenir les versions disponibles de PrestaShop
-        function obtenirVersionsPrestaShop() {
-            $url = "https://api.github.com/repos/PrestaShop/PrestaShop/tags";
-            $context = stream_context_create([
-                "http" => [
-                    "method" => "GET",
-                    "header" => "User-Agent: request"
-                ]
-            ]);
-            $tags = json_decode(file_get_contents($url, false, $context), true);
-            return $tags ? array_column($tags, 'name') : [];
-        }
-        // Télécharger la version sélectionnée de PrestaShop
-        function telechargerPrestaShop($version) {
-            $url = "https://github.com/PrestaShop/PrestaShop/releases/download/{$version}/prestashop_{$version}.zip";
-            $zipFile = "prestashop_{$version}.zip";
-            if (file_put_contents($zipFile, fopen($url, 'r')) === false) {
-                throw new Exception("Erreur lors du téléchargement du fichier : {$zipFile}");
-            }
-            return $zipFile;
-        }
-        // Décompresser l'archive téléchargée
-        function decompresserPrestaShop($zipFile) {
+		function getPrestaShopVersions() {
+			$url = "https://api.github.com/repos/PrestaShop/PrestaShop/tags";
+			$opts = [
+				"http" => [
+					"method" => "GET",
+					"header" => "User-Agent: request"
+				]
+			];
+
+			$context = stream_context_create($opts);
+			$json = file_get_contents($url, false, $context);
+			$tags = json_decode($json, true);
+
+			$versions = [];
+			foreach ($tags as $tag) {
+				$versions[] = $tag['name'];
+			}
+
+			return $versions;
+		}
+
+		function downloadPrestaShop($version) {
+			$url = "https://github.com/PrestaShop/PrestaShop/releases/download/{$version}/prestashop_{$version}.zip";
+			$zipFile = "prestashop_{$version}.zip";
+
+			file_put_contents($zipFile, fopen($url, 'r'));
+
+			return $zipFile;
+		}
+
+		function unzipPrestaShop($zipFile) {
             $zip = new ZipArchive;
             if ($zip->open($zipFile) === TRUE) {
                 $zip->extractTo('.');
                 $zip->close();
-                return true;
-            }
-            throw new Exception("Échec de la décompression de {$zipFile}.");
-        }
-        // Supprimer le fichier zip
-        function supprimerFichier($zipFile) {
-            if (file_exists($zipFile)) {
                 unlink($zipFile);
-            }
-        }
-        // Gestion des actions de l'utilisateur
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $version = filter_input(INPUT_POST, 'version', FILTER_SANITIZE_STRING);
-            $zipFile = filter_input(INPUT_POST, 'unzip', FILTER_SANITIZE_STRING);
-            $response = filter_input(INPUT_POST, 'response', FILTER_SANITIZE_STRING);
-            $delete = filter_input(INPUT_POST, 'delete', FILTER_SANITIZE_STRING);
-
-            try {
-                if ($delete) {
-                    supprimerFichier($delete);
-                    echo "<p>Le fichier {$delete} a été supprimé.</p>";
-                } elseif ($version && !$zipFile) {
-                    $zipFile = telechargerPrestaShop($version);
-                    echo "<p>Téléchargement de {$zipFile} terminé. Souhaitez-vous décompresser le fichier ?</p>";
-                    echo "<form method='post'>
-                            <input type='hidden' name='version' value='{$version}'>
-                            <input type='hidden' name='unzip' value='{$zipFile}'>
-                            <input type='submit' value='OUI' name='response' aria-label='Décompresser'>
-                            <input type='submit' value='NON' name='response' aria-label='Annuler'>
-                          </form>";
-                } elseif ($zipFile && $response === "OUI") {
-                    decompresserPrestaShop($zipFile);
-                    echo "<p>Décompression réussie : {$zipFile}.</p>";
-                    echo "<form method='post'>
-                            <button type='submit' name='delete' value='{$zipFile}'>Supprimer le fichier téléchargé</button>
-                          </form>";
-                }
-            } catch (Exception $e) {
-                echo "<div class='alert'>{$e->getMessage()}</div>";
-            }
-        } else {
-            $versions = obtenirVersionsPrestaShop();
-            if ($versions) {
-                echo "<form method='post'>
-                        <select name='version'>";
-                foreach ($versions as $version) {
-                    echo "<option value='{$version}'>{$version}</option>";
-                }
-                echo "</select>
-                      <input type='submit' value='Télécharger' aria-label='Télécharger la version sélectionnée'>
-                      </form>";
+                echo "Décompression de {$zipFile} réussie.<br>";
+                echo "<form method='post'>";
+                echo "Voulez-vous démarrer l'installation de PrestaShop maintenant ?";
+                echo "<input type='hidden' name='redirect' value='index.php'>";
+                echo "<input type='submit' value='OUI' name='reponse'>";
+                echo "<input type='submit' value='NON' name='reponse'>";
+                echo "</form>";
             } else {
-                echo "<p>Aucune version disponible pour le moment.</p>";
+                echo "Échec de la décompression de {$zipFile}<br>";
             }
         }
+
+        function checkExtension ($extension) {
+            if (extension_loaded($extension)) {
+                return "<b><font color=green>extension $extension : OK</font><br></b>";
+            } else {
+                return "<b><font color=red>extension $extension : NOK</font><br></b>";
+            }
+        }
+
+        function endScript() {
+            echo "Fin du script";
+            exit();
+        }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['version']) && empty($_POST['unzip']) && empty($_POST['redirect'])) {
+        $zipFile = downloadPrestaShop($_POST['version']);
+        echo "<div>Téléchargement de {$zipFile} terminé.</div>";
+        echo "<div>Voulez-vous décompresser le fichier téléchargé ?</div>";
+        echo "<form method='post'>";
+        echo "<input type='hidden' name='version' value='{$_POST['version']}'>";
+        echo "<input type='hidden' name='unzip' value='{$zipFile}'>";
+        echo "<input type='submit' style='background-color: green; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;' value='OUI' name='reponse'>";
+        echo "<input type='submit' style='background-color: red; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;' value='NON' name='reponse'>";
+        echo "</form>";
+    } elseif (!empty($_POST['unzip']) && empty($_POST['redirect'])) {
+        if ($_POST['reponse'] == "OUI") {
+            unzipPrestaShop($_POST['unzip']);
+        } elseif ($_POST['reponse'] == "NON") {
+            endScript();
+        }
+    } elseif (!empty($_POST['redirect'])) {
+        if ($_POST['reponse'] == "OUI") {
+            header('Location: ' . $_POST['redirect']);
+            endScript();
+        } elseif ($_POST['reponse'] == "NON") {
+            endScript();
+        }
+    }
+} else {
+    $versions = getPrestaShopVersions();
+    echo "<form method='post'>";
+    echo "<select name='version'>";
+    foreach ($versions as $version) {
+        echo "<option value='{$version}'>{$version}</option>";
+    }
+    echo "</select>";
+    echo "<input type='submit' value='Télécharger'>";
+    echo "</form>";
+}
+?>
+        <p>
+            <center>
+                <b>ATTENTION</b>:<br>
+            </center>
+                La version de votre PHP n'est peut-être pas compatible avec la version Prestashop que vous allez installer.<br>
+            <br>
+                <a href="https://devdocs.prestashop-project.org/8/basics/installation/system-requirements/" target="_blank">Vérifiez ici les prérequis pour la version 8.x</a><br>  
+                <a href="https://devdocs.prestashop-project.org/1.7/basics/installation/system-requirements/" target="_blank">Vérifiez ici les prérequis pour la version 1.7.x</a><br><br>
+             <div class="info-box">
+    <b>Votre hébergement tourne actuellement en PHP :</b><br>
+    <?php echo phpversion(); ?>
+
+    <div class="extensions">
+        <?php 
+            $extensions = ['CURL','DOM','Fileinfo','GD','Iconv','Intl','JSON','Mbstring','OpenSSL','DOM','PDO','PDO_MYSQL','SimpleXML','Zip'];
+            echo "<ul>";
+            foreach ($extensions as $extension) {
+                echo "<li>";
+                if (extension_loaded($extension)) {
+                    echo "<span class='icon-ok'>✔</span> $extension";
+                } else {
+                    echo "<span class='icon-not-ok'>✖</span> $extension";
+                }
+                echo "</li>"; 
+            }
+            echo "</ul>";
         ?>
-        <!-- Affichage de la version actuelle de PHP -->
-        <div class="info-box">
-            <span><b>Version actuelle de PHP :</b> <?php echo phpversion(); ?></span>
-            <div class="extensions">
-                <ul>
-                    <?php
-                    // Liste des extensions PHP à vérifier
-                    $extensions = ['CURL', 'DOM', 'Fileinfo', 'GD', 'Iconv', 'Intl', 'JSON', 'Mbstring', 'OpenSSL', 'PDO', 'PDO_MYSQL', 'SimpleXML', 'Zip'];
-                    // Boucle pour vérifier chaque extension dans la liste
-                    foreach ($extensions as $extension) {
-                     // Appeler la fonction verifierExtension pour chaque extension et afficher le résultat
-                        echo verifierExtension($extension);
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-        <!-- En-tête pour attirer l'attention sur la compatibilité PHP -->
-        <div class="attention">
-            <h2><strong>ATTENTION</strong>: Vérifiez que PHP est compatible.</h2>
-            <!-- Liens vers la documentation sur les pré-requis pour différentes versions de PrestaShop -->
-            <p>
-                <a href="https://devdocs.prestashop-project.org/9/basics/installation/system-requirements/"
-                    target="_blank">Pré-requis pour la version 9.x</a><br>
-                <a href="https://devdocs.prestashop-project.org/8/basics/installation/system-requirements/"
-                    target="_blank">Pré-requis pour la version 8.x</a><br>
-                <a href="https://devdocs.prestashop-project.org/1.7/basics/installation/system-requirements/"
-                    target="_blank">Pré-requis pour la version 1.7.x</a>
-            </p>
-        </div>
     </div>
-    <!--FOOTER-->
-    <div class="footer">
-        <!-- Pied de page avec des informations sur le site -->
-        <p>&copy; 2024 thierrylaval.dev - Licence : MIT</p>
-        <!-- Lien pour soutenir le travail de l'auteur -->
-        <p>Pour soutenir mon travail : <a href="https://revolut.me/laval96o">Offrez-moi un café</a></p>
+</div>
+    </p>
+	<div class="footer">
+        <p>&copy; 2024 thierrylaval.dev - Ce script est sous licence - Academic Free License AFL 3.0</p>
+        <p>Soutenez mon travail : <a href="https://ko-fi.com/thierrylaval">Offrez-moi un café</a></p>
+        </div>	
     </div>
 </body>
 </html>
