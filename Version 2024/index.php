@@ -1,17 +1,12 @@
 <?php
-define('MSG_EXTENSION_ACTIVE', "est activée");
-define('MSG_EXTENSION_INACTIVE', "n'est pas activée");
-
-/**
- * Vérifie si une extension PHP est chargée et retourne un message formaté
- * @param string $extension Nom de l'extension à vérifier
- * @return string Message HTML formaté
- */
-function verifierExtension(string $extension): string {
-    $isLoaded = extension_loaded($extension);
-    $status = $isLoaded ? 'success' : 'error';
-    $message = $isLoaded ? MSG_EXTENSION_ACTIVE : MSG_EXTENSION_INACTIVE;
-    return sprintf('<li class="extension-%s">%s %s</li>', $status, $extension, $message);
+// Fonction pour vérifier les extensions PHP
+function verifierExtension($extension)
+{  // Vérifie si l'extension spécifiée est chargée
+    return extension_loaded($extension)
+        // Si l'extension est chargée, retourne un élément de liste avec un message en vert
+        ? "<li style='color: green;'>$extension est activée.</li>"
+        // Si l'extension n'est pas chargée, retourne un élément de liste avec un message en rouge
+        : "<li style='color: red;'>$extension n'est pas activée.</li>";
 }
 ?>
 <!DOCTYPE html>
@@ -141,113 +136,11 @@ function verifierExtension(string $extension): string {
                 /* Suppression de la marge par défaut */
             }
 
-            .info-box {
-                background-color: var(--info-background);
-                border-radius: 12px;
-                padding: 20px;
-                margin-top: 20px;
-            }
-
-            .version-info {
-                margin-bottom: 15px;
-            }
-
-            .version-number {
-                font-weight: bold;
-                color: var(--primary-color);
-                margin-left: 8px;
-            }
-
-            .extensions-list {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 10px;
-                padding: 0;
-                margin: 0;
-            }
-
-            .extensions-list li {
-                display: flex;
-                align-items: center;
-                padding: 8px;
-                border-radius: 6px;
-                background-color: var(--container-background);
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s ease;
-            }
-
-            .extensions-list li:hover {
-                transform: translateY(-2px);
-            }
-
-            .extension-success {
-                color: var(--success-color, #28a745);
-            }
-
-            .extension-error {
-                color: var(--error-color, #dc3545);
-            }
-
-            .icon {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 24px;
-                height: 24px;
-                margin-right: 8px;
-                border-radius: 50%;
-                font-weight: bold;
-            }
-
-            .extension-success .icon {
-                background-color: var(--success-color, #28a745);
-                color: white;
-            }
-
-            .extension-error .icon {
-                background-color: var(--error-color, #dc3545);
-                color: white;
-            }
-
-            .footer {
-                text-align: center;
-                margin-top: 30px;
-                padding: 20px 0;
-                border-top: 1px solid var(--border-color);
-            }
-
-            .copyright a {
-                color: var(--primary-color);
-                text-decoration: none;
-                transition: color 0.2s ease;
-            }
-
-            .copyright a:hover {
-                color: var(--primary-color-dark);
-            }
-
-            .support {
-                margin: 15px 0;
-                font-weight: bold;
-            }
-
-            .donate-button {
-                display: inline-block;
-                padding: 8px 16px;
-                background-color: var(--button-background);
-                color: white;
-                text-decoration: none;
-                border-radius: 20px;
-                transition: all 0.2s ease;
-            }
-
-            .donate-button:hover {
-                background-color: var(--button-hover);
-                transform: scale(1.05);
-            }
-
-            .validation {
-                margin-top: 20px;
+            .extensions li {
+                flex-basis: 45%;
+                /* Largeur de base des éléments de liste à 45% */
+                padding: 3px;
+                /* Espacement intérieur des éléments de liste */
             }
 
             .footer {
@@ -555,50 +448,40 @@ function verifierExtension(string $extension): string {
                 }
             </script>
             <div class="info-box">
-                <div class="version-info">
-                    <b>L'hébergement tourne actuellement en PHP :</b>
-                    <span class="version-number"><?php echo phpversion(); ?></span>
-                </div>
+                <b>L'hébergement tourne actuellement en PHP :</b>
+                <?php echo phpversion(); ?>
                 <div class="extensions">
                     <?php
-                    $requiredExtensions = [
-                        'CURL' => 'Gestion des requêtes HTTP',
-                        'DOM' => 'Manipulation du DOM',
-                        'Fileinfo' => 'Information sur les fichiers',
-                        'GD' => 'Manipulation d\'images',
-                        'Iconv' => 'Conversion de caractères',
-                        'Intl' => 'Internationalisation',
-                        'JSON' => 'Gestion du format JSON',
-                        'Mbstring' => 'Gestion des chaînes multi-octets',
-                        'OpenSSL' => 'Sécurité SSL/TLS',
-                        'PDO' => 'Accès aux bases de données',
-                        'PDO_MYSQL' => 'Support MySQL',
-                        'SimpleXML' => 'Manipulation XML',
-                        'Zip' => 'Gestion des archives ZIP'
-                    ];
-                    echo '<ul class="extensions-list">';
-                    foreach ($requiredExtensions as $extension => $description) {
-                        $isLoaded = extension_loaded($extension);
-                        $status = $isLoaded ? 'success' : 'error';
-                        $icon = $isLoaded ? '✓' : '×';
-                        echo sprintf(
-                            '<li class="extension-%s" title="%s"><span class="icon">%s</span> %s</li>',
-                            $status,
-                            htmlspecialchars($description),
-                            $icon,
-                            $extension
-                        );
+                    $extensions = ['CURL', 'DOM', 'Fileinfo', 'GD', 'Iconv', 'Intl', 'JSON', 'Mbstring', 'OpenSSL', 'PDO', 'PDO_MYSQL', 'SimpleXML', 'Zip'];
+                    echo '<ul>';
+                    foreach ($extensions as $extension) {
+                        echo '<li>';
+                        if (extension_loaded($extension)) {
+                            echo "<span class='icon-ok'>✔</span> $extension";
+                        } else {
+                            echo "<span class='icon-not-ok'>✖</span> $extension";
+                        }
+                        echo '</li>';
                     }
                     echo '</ul>';
                     ?>
                 </div>
             </div>
             <div class="footer">
-                <p class="copyright">🇫🇷 &copy; 2025 <a href="https://thierrylaval.dev" target="_blank">thierrylaval.dev</a> - Licence : MIT 🇫🇷</p>
-                <p class="support">Pour soutenir mon travail : <a href="https://revolut.me/laval96o" target="_blank" title="Offrez un café à l'auteur" class="donate-button">👉🏻 Offrez-moi un café ☕️</a></p>
-                <div class="validation">
-                    <img src="https://www.w3.org/assets/logos/w3c/w3c-developers-dark.svg" alt="W3C Developers" width="100" height="35">
-                </div>
+                <!-- Pied de page avec des informations sur le site -->
+                <p>🇫🇷 &copy; 2024 <a href="https://thierrylaval.dev" target="_blank" style="color: #41A1E8; text-decoration: none;">thierrylaval.dev</a> - Licence : MIT 🇫🇷</p>
+                <!-- Lien pour soutenir le travail de l'auteur -->
+                <p style="color: black; font-weight: bold;">Pour soutenir mon travail : <a href="https://revolut.me/laval96o" target="_blank" style="color: red; text-decoration: none; font-weight: bold;" title="Offrez un café à l'auteur" class="link-button">👉🏻 Offrez-moi un café ☕️</a></p>
+                <!--<p><img style="border:0;width:88px;height:31px"
+                        src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                        alt="CSS Valide !" /></a></p>
+                -->
+                <p><img style="border:0;width:100px;height:35px"
+                        src="https://www.w3.org/assets/logos/w3c/w3c-developers-dark.svg"
+                        alt="CSS Valide !" />
+                    </a>
+                </p>
+
             </div>
         </div>
     </body>
