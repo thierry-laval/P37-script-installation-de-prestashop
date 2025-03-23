@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Script d'installation de PrestaShop
+ * Script d'installation de PrestaShop (start2020)
  * 
  * Ce script facilite le téléchargement et l'installation de PrestaShop en :
  * 1. Vérifiant la compatibilité du serveur
@@ -10,7 +10,7 @@
  * 4. Préparant l'installation
  * 
  * @author Thierry Laval
- * @version 2.0.0
+ * @version 2.0.4
  * @link https://github.com/thierry-laval
  */
 
