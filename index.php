@@ -720,11 +720,10 @@ function verifierExtension(string $extension): string
 
                 // Formulaire pour lancer l'installation
                 echo "<form method='post' class='install-form'>";
-                echo "<p>Voulez-vous démarrer l'installation de PrestaShop maintenant ?</p>";
+                echo "<p>Vous êtes prêt ?</p>";
                 echo "<input type='hidden' name='redirect' value='index.php'>";
                 echo "<div class='button-group'>";
-                echo "<input type='submit' value='OUI' name='reponse' class='button-primary'>";
-                echo "<input type='submit' value='NON' name='reponse' class='button-secondary'>";
+                echo "<input type='submit' value='Cliquez pour installer Prestashop' name='reponse' class='button-primary'>";
                 echo "</div>";
                 echo '</form>';
             } else {
