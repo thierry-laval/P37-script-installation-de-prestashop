@@ -69,7 +69,7 @@ A faire :
 
 Ce projet est sous licence [MIT](LICENCE).
 
-Copyright © 2024 [Thierry Laval](https://thierrylaval.dev)
+Copyright © 2023 [Thierry Laval](https://thierrylaval.dev)
 
 #### €€€ Soutien
 
