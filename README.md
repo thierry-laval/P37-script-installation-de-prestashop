@@ -61,9 +61,14 @@ Suivez les étapes suivantes :
 * Push vers la branche (git push origin feature/ajout-fonctionnalite)
 * Ouvrez une Pull Request
 
-A faire :
+Points d'Amélioration Possibles :
 
 * Installation automatique d'une base de données
+* Ajouter des media queries pour les très petites écrans
+* Implémenter un système de typographie responsive
+* Prévoir des variables de fallback pour les anciens navigateurs
+* Ajouter des transitions pour les changements de grille
+* Préparer un zip de PS9 pour le téléchargement futur
 
 #### 📝 &nbsp; License
 
