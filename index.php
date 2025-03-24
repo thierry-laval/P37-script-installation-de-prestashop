@@ -599,7 +599,7 @@ function verifierExtension(string $extension): string
         <div class="container">
             <img src="https://thierrylaval.dev/wp-content/uploads/2022/04/Logo-Developpeur-web.png" alt="Logo Développeur Web de Thierry Laval" width="300" height="100" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" loading="lazy">
             <h1>Assistant PrestaShop</h1>
-            <h2>Télécharge | Dézippe | Installe</h2>
+            <h2>Télécharger | Dézipper | Installer</h2>
             <p>Ce script a été créé pour faciliter le téléchargement et l'installation des différentes versions de PrestaShop directement depuis le dépôt GitHub.</p>
             <p><strong>Veuillez choisir une version</strong></p>
             <!-- PHP code pour télécharger et décompresser -->
@@ -809,19 +809,19 @@ function verifierExtension(string $extension): string
             <div class="accordion">
                 <button class="accordion-button" onclick="toggleAccordion()">Compatibilité de version PHP</button>
                 <div class="accordion-content compatibility-text" id="accordion-content" style="display: none;">
-                    <p>Mon script simplifie le déploiement de PrestaShop, mais il est essentiel de vérifier la compatibilité de ta version PHP. Une version incompatible peut entraîner des bugs à l'installation ou à l'utilisation de ta boutique.</p>
+                    <p>Mon script simplifie le déploiement de PrestaShop, mais il est essentiel de vérifier la compatibilité de votre version PHP. Une version incompatible peut entraîner des bugs à l'installation ou à l'utilisation de la boutique.</p>
                     <ul>
                         <li><strong>PrestaShop 8.x</strong> : PHP 7.2.5 à 8.1</li>
                         <li><strong>PrestaShop 1.7.x</strong> : PHP 5.6 à 7.2 (selon la sous-version)</li>
                     </ul>
-                    <p>Consulte la <a href="https://devdocs.prestashop.com/" target="_blank">documentation officielle</a> pour des informations à jour.</p>
-                    <p>Avant d'installer PrestaShop, vérifie la compatibilité de ton hébergement et consulte les prérequis :</p>
+                    <p>Consultez la <a href="https://devdocs.prestashop.com/" target="_blank">documentation officielle</a> pour des informations à jour.</p>
+                    <p>Avant d'installer PrestaShop, vérifiez la compatibilité de votre hébergement et consultez les prérequis :</p>
                     <ul>
                         <li><a href="https://devdocs.prestashop-project.org/8/basics/installation/system-requirements/" target="_blank" title="Pré-requis pour PrestaShop 8.x" class="link-button">Pré-requis pour PrestaShop 8.x</a></li>
                         <li><a href="https://devdocs.prestashop-project.org/1.7/basics/installation/system-requirements/" target="_blank" title="Pré-requis pour PrestaShop 1.7.x" class="link-button">Pré-requis pour PrestaShop 1.7.x</a></li>
                     </ul>
-                    <p>Prends le temps de lire les instructions et de vérifier ta version PHP avant de télécharger. Les versions 7.2 et inférieures peuvent présenter des failles de sécurité. Si nécessaire, mets à jour ton hébergement avec une version PHP adaptée.</p>
-                    <p>Évite les versions <em>alpha</em>, <em>beta</em> et <em>rc</em> de PrestaShop, conçues pour les tests et instables en production. Opte toujours pour une version stable, sauf besoin spécifique d'une version en développement.</p>
+                    <p>Prenez le temps de lire les instructions et de vérifier la version de PHP avant de télécharger. Les versions 7.2 et inférieures peuvent présenter des failles de sécurité. Si nécessaire, mettre à jour votre hébergement avec une version PHP adaptée.</p>
+                    <p>Évitez les versions <em>alpha</em>, <em>beta</em> et <em>rc</em> de PrestaShop, conçues pour les tests et instables en production. Optez toujours pour une version stable, sauf besoin spécifique d'une version en développement.</p>
                 </div>
             </div>
             <script>
