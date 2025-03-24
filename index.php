@@ -937,7 +937,7 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <p class="copyright">🇫🇷 &copy; 2026 <a href="https://thierrylaval.dev" target="_blank">thierrylaval.dev</a> - Licence : MIT 🇫🇷</p>
+                    <p class="copyright">🇫🇷 &copy; 2025 <a href="https://thierrylaval.dev" target="_blank">thierrylaval.dev</a> - Licence : MIT 🇫🇷</p>
                     <p class="support">Pour soutenir mon travail :<br><a href="https://revolut.me/laval96o" target="_blank" title="Un petit don, ça vous dit ? Ça m'aidera à partager mon travail gratuitement ! 😊" class="donate-button">👉🏻 Offrez-moi un café ☕️</a>
                     </p>
                     <div class="validation">
